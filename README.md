@@ -32,6 +32,41 @@
 $ yarn install
 ```
 
+## Connection to the database with Prisma
+<p>The prisma and prisma client package is already installed. So you only have to put in your `.env` file the connection data to your database.</p>
+<p>In the `.env.example` file, there are different examples according to the database provider you use.</p>
+
+<p>First you must put the data in the .env file to get the data and schemas from your database.</p>
+
+```
+DATABASE_URL="mysql://user:password@localhost:3306/DBName"
+```
+
+<p>After you have the data for the connection in your .env file you must verify in the `schema.prisma` file in the prisma folder in the root of the project the provider line of the datasource db and change it to your database engine, example if you are using mysql: </p>
+
+```
+datasource db {
+// Change the provider to your database engine
+//provider = "Put the name of your database provider here."
+provider = "mysql"
+  url = env("DATABASE_URL")
+}
+```
+
+<p>Then do database pull:</p>
+
+```
+npx prism db pull
+```
+<p>and</p>
+
+```
+npx prisma generate
+```
+
+There, you have prisma configured with your database schemas.
+
+
 ## Running the app
 
 ```bash

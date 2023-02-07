@@ -56,7 +56,7 @@ provider = "mysql"
 <p>Then do database pull:</p>
 
 ```
-npx prism db pull
+npx prisma db pull
 ```
 <p>and</p>
 
